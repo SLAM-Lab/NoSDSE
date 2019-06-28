@@ -31,16 +31,22 @@ Directories:
      ezSIFT/                     - The SIFT (scale-invariant feature transform) algorithm library
      networking_api/             - Networking APIs and runtime libraries (based on lwip and HCSim) 
      src/                        - Source code for application, system and network models
+     dse.py                      - Model generators (From genome to NoSSim simulation instance)
+     nsga.py                     - Design space explorer based on NSGA-II
 
   examples/ecg_diagnosis/    -- The ECG monitoring example
      ecg/     	                 - ECG diagnosis library
      networking_api/             - Networking APIs and runtime libraries (based on lwip and HCSim) 
      src/                        - Source code for application, system and network models
+     dse.py                      - Model generators (From genome to NoSSim simulation instance)
+     nsga.py                     - Design space explorer based on NSGA-II
 
   examples/deepthings/    -- The DeepThings example
      application/     	         - DeepThings source code and Darknet library
      networking_api/             - Distributed work stealing runtime (based on lwip and HCSim) 
      src/                        - Source code for application, system and network models
+     dse.py                      - Model generators (From genome to NoSSim simulation instance)
+     nsga.py                     - Design space explorer based on NSGA-II
 ```
 
 Building and installing:
@@ -75,10 +81,10 @@ For DeepThings, you need to download the [weight file for YOLOv2](https://pjredd
 To build an example, change into the corresponding example
 directory and run:
 ```bash
-  cd examples/vision_graph
-  make dependency
-  make makefiles
-  make
+   cd examples/vision_graph
+   make dependency
+   make makefiles
+   make
 ```
 To perform exploration for an example:
 ```bash
