@@ -1,0 +1,5 @@
+name_of_function	input1	input2	input3	calling#	avg_time_usec 
+forward_until	0	4	0	1	4921612.000000
+forward_until	1	4	0	1	4892635.000000
+forward_until	2	4	0	1	4918414.000000
+forward_until	3	4	0	1	4913696.000000
