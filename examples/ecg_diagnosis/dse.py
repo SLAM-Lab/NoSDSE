@@ -425,7 +425,8 @@ def evaluate_one(genome = [2,   3, 3, 3, 3, 3, 3,    1, 1, 1, 1, 1, 1]):
 
 
 if __name__ == "__main__":
-   
+   evaluate_one()
+   """   
    modulation = ["802.11", "802.15.4"]
    op_mode_list = [("g", "6Mbps"), ("b", "1Mbps")]
    edge_number_list = [2,4,6]
@@ -477,7 +478,7 @@ if __name__ == "__main__":
          if network_type == "802.15.4":
             break
       recompile = 1
-   
+   """
    """
    network_type = "802.15.4" #modulation = ["802.11", "802.15.4"]
 

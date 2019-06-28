@@ -1,0 +1,5 @@
+# Don't track content of these config files
+src/app_config.json
+src/omnetpp.ini
+src/sim_config.json
+
