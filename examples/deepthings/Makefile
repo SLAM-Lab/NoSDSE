@@ -32,6 +32,9 @@ cleanall: checkmakefiles
 	@cd src && $(MAKE) MODE=debug clean
 	@rm -f src/Makefile src/$(PKG_NAME)/features.h
 	@cd src && rm -rf result.json nic_energy_device* out results *.log *.png .cmdenv-log .tkenvlog .tkenvrc
+	@cd src && $(MAKE) -C $(DARKNET) clean
+	@cd src && $(MAKE) -C $(DEEPTHINGS_LIB) clean
+	@cd src && $(MAKE) -C $(DISTRIOT) clean
 
 MAKEMAKE_OPTIONS := -f --deep -o $(MODEL_EXE) -O out --no-deep-includes -I. -I.. -I./NoS/applications -I./NoS/applications/OSNode \
 		 -I$(SYSTEMC)/include  -I./src/OSNode -I$(JSONPARSER) \
