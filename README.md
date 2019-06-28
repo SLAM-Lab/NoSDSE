@@ -100,9 +100,10 @@ References:
 - [2] Z. Zhao, K. Mirzazad, A. Gerstlauer, "Network-level Design Space Exploration for
     Resource-Constrained Networks-of-Systems," ACM Transactions on Embedded
     Computer Systems (TECS), under review.
-- [3] Z. Zhao, K. Mirzazad, A. Gerstlauer, "Network-level Design Space Exploration for
-    Resource-Constrained Networks-of-Systems," CODES+ISSS, special issue of IEEE 
-    Transactions on Computer-Aided Design of Integrated Circuits and Systems (TCAD), 2018
+- [3] Z. Zhao, K. Mirzazad, A. Gerstlauer, "DeepThings: Distributed Adaptive Deep 
+    Learning Inference on Resource-Constrained IoT Edge Clusters," CODES+ISSS, special 
+    issue of IEEE Transactions on Computer-Aided Design of Integrated Circuits and 
+    Systems (TCAD), 2018
 
 
 Contact: 
