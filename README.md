@@ -2,10 +2,10 @@
 Network-of-Systems Design Space Exploration
 ============================
 
-NoSDSE [3] is a network-level design space exploration framework resource-constrained 
-Networks-of-Systems (NoS). It is based on NoSSim [1], a network/system co-simulation 
-framework that combines a fast and accurate host-compiled full system simulator [2] with 
-a standard, reconfigurable OMNeT++ network simulation backplane. 
+NoSDSE [2] is a network-level design space exploration framework resource-constrained 
+Networks-of-Systems (NoS). It relies on NoSSim [1], a fast and accurate NoS simulation 
+framework, for design point evaluation. NoSDSE further includes NoSSim model generators 
+and a multi-objective genetic algorithm to allow automated NoS design space exploration. 
 
 NoSDSE is demonstrated with three IoT/mobile application scenarios. 
 
@@ -19,7 +19,7 @@ IoT scenarios:
 		                 detect heart arrhythmia
 
   examples/deepthings         -- DeepThings is a framework for locally distributed and adaptive CNN 
-                                 inference in resource-constrained IoT edge clusters [4]
+                                 inference in resource-constrained IoT edge clusters [3]
 ```
 
 Directories:
@@ -97,13 +97,10 @@ References:
 -----------
 - [1] Z. Zhao, V. Tsoutsouras, D. Soudris and A. Gerstlauer, "Network/System 
     Co-Simulation for Design Space Exploration of IoT Applications," SAMOS, July 2017.
-- [2] P. Razaghi, A. Gerstlauer, "Host-Compiled Multi-Core System Simulation
-    for Early Real-Time Performance Evaluation," ACM Transactions on Embedded
-    Computer Systems (TECS), 2014.
-- [3] Z. Zhao, K. Mirzazad, A. Gerstlauer, "Network-level Design Space Exploration for
+- [2] Z. Zhao, K. Mirzazad, A. Gerstlauer, "Network-level Design Space Exploration for
     Resource-Constrained Networks-of-Systems," ACM Transactions on Embedded
     Computer Systems (TECS), under review.
-- [4] Z. Zhao, K. Mirzazad, A. Gerstlauer, "Network-level Design Space Exploration for
+- [3] Z. Zhao, K. Mirzazad, A. Gerstlauer, "Network-level Design Space Exploration for
     Resource-Constrained Networks-of-Systems," CODES+ISSS, special issue of IEEE 
     Transactions on Computer-Aided Design of Integrated Circuits and Systems (TCAD), 2018
 
