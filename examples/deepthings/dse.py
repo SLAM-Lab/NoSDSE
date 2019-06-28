@@ -387,8 +387,8 @@ def evaluate_one(top_workspace = "./",
     omnetpp_ini(top_workspace)
 
     #recompile = 1
-    cluster_ned(top_workspace)
-    remake_lwip(top_workspace)
+    #cluster_ned(top_workspace)
+    #remake_lwip(top_workspace)
     remake_app()
     #recompile = 1
 
@@ -468,11 +468,12 @@ def calculate_manual_improvement():
 
 if __name__ == "__main__":
     #runtime_measure()
-    #result = evaluate_one(top_workspace = "../deepthings_1/", genome = [6,  3,  1,  0, 2, 2, 2, 2, 2,  2, 2, 2, 2, 2, 2, 2])
-    #print result
-    #calculate_improvement()
-    #calculate_manual_improvement()
+    result = evaluate_one(top_workspace = "./", genome = [6,  3,  6,  0, 0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 0, 2])
+    print result
+    calculate_improvement()
+    calculate_manual_improvement()
 
+"""
     edge_number = 6
     data_source = 1
     layers = 16
@@ -499,7 +500,7 @@ if __name__ == "__main__":
     call(["make","test"])
     print "Simulation is finished"
    
-
+"""
 
 
 """    

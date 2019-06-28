@@ -2,7 +2,7 @@ HCSIM=1
 OPENMP=1
 NNPACK=0
 ARM_NEON=0
-DEBUG=1
+DEBUG=0
 DARKNET=./darknet-nnpack
 #DistrIoT ported with lwIP/HCSim
 DISTRIOT=../runtime
@@ -64,7 +64,7 @@ LIBOBJ = $(addprefix $(OBJDIR), $(LIBOBJS))
 
 DEPS = $(wildcard */*.h) Makefile
 
-all: obj $(SLIB) $(ALIB) 
+all: obj $(SLIB) $(ALIB) $(DARKNETLIB) 
 
 $(ALIB): $(LIBOBJ)
 	$(AR) $(ARFLAGS) $@ $^

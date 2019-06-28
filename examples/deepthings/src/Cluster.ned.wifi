@@ -28,7 +28,7 @@ import inet.linklayer.contract.IWiredNic;
 import inet.linklayer.contract.IWirelessNic;
 import inet.mobility.contract.IMobility;
 import inet.networklayer.common.InterfaceTable;
-
+import inet.linklayer.ieee8021d.relay.Ieee8021dRelay;
 
 module SmartAccessPoint
 {
@@ -70,6 +70,10 @@ module SmartAccessPoint
                 @display("p=151,121");
         }
 
+        //ap: Ieee8021dRelay {
+        //    parameters:
+        //        @display("p=151,121");
+        //}
         //srv: SrvWrapper {
         //    parameters:
         //        registerSAP = false;
@@ -93,8 +97,8 @@ module SmartAccessPoint
         // ethernet must be connected only AFTER wireless ports
         for i=0..sizeof(ethg)-1 {
             eth[i].phys <--> ethg[i];
-            eth[i].upperLayerIn <-- relayUnit.ifOut++ if (sizeof(ethg)+numRadios)>1;
-            eth[i].upperLayerOut --> relayUnit.ifIn++ if (sizeof(ethg)+numRadios)>1;
+            eth[i].upperLayerIn <-- ap.ifOut++ if (sizeof(ethg)+numRadios)>1;
+            eth[i].upperLayerOut --> ap.ifIn++ if (sizeof(ethg)+numRadios)>1;
         }
         //wlan.radioIn <-- radioIn[0];
         //wlan.upperLayerOut --> srv.in;
@@ -128,7 +132,6 @@ module ClusterClient
 
         cli: CliWrapper {
             parameters:
-                registerSAP = false;
                 @display("b=40,24;p=180,60,col");
         }
 
@@ -204,9 +207,9 @@ network Cluster
                 @display("p=100,100;r=,,#707070");
         }
         //ap: SmartAccessPoint {
-        //    parameters:
-        //        @display("p=200,200;r=,,#707070");
-        //        wlan[*].mgmtType = "Ieee80211MgmtAPSimplified";
+          //  parameters:
+          //      @display("p=200,200;r=,,#707070");
+          //      wlan[*].mgmtType = "Ieee80211MgmtAPSimplified";
         //}
 
         ap: AccessPoint {
