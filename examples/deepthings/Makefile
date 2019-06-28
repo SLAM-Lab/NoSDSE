@@ -1,10 +1,12 @@
+#INET dir
+INET_DIR = /home/slam/OMNET/inet
 #OS model
-OS_MODEL=/home/slam/OMNET/HCSim
+OS_MODEL=../../../NoSSim/HCSim
 #lwIP stack
-LWIP=/home/slam/OMNET/lwip-hcsim
-LWIP_LIB=/home/slam/OMNET/lwip-hcsim/ports
+LWIP=../../../NoSSim/lwip-hcsim
+LWIP_LIB=../../../NoSSim/lwip-hcsim/ports
 #Simulation contexts
-HELPER=/home/slam/OMNET/lwip-hcsim/ports/hcsim/context
+HELPER=../../../NoSSim/lwip-hcsim/ports/hcsim/context
 JSONPARSER=../../../tools/json
 #IoT Runtime library
 DISTRIOT=../runtime
