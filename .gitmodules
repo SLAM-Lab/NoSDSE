@@ -1,0 +1,3 @@
+[submodule "NoSSim"]
+	path = NoSSim
+	url = https://github.com/SLAM-Lab/NoSSim
