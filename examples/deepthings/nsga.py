@@ -144,7 +144,7 @@ def mainNSGA(seed=None):
     #MUTPB = 0.8
     #NGEN = 30
 
-    MU = 160
+    MU = 80
     CXPB = 0.8
     MUTPB = 0.8
     NGEN = 40
