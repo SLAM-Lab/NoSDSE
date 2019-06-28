@@ -239,7 +239,7 @@ def remake_lwip():
     with open("src/sim_config.json") as jfile:
         sim_config_json = json.load(jfile) 
 
-    for line in fileinput.input("/home/slam/OMNET/lwip-hcsim/ports/hcsim/lwipopts.h", inplace=True):
+    for line in fileinput.input("../../NoSSim/lwip-hcsim/ports/hcsim/lwipopts.h", inplace=True):
        if "#define LWIP_IPV6 " in line:
            if sim_config_json["network"]["type"] == "802.15.4":
                print "#define LWIP_IPV6          1\n",
@@ -253,12 +253,9 @@ def remake_lwip():
        else:
            print "%s" % (line),
 
-    call(["make", "-C", "~/OMNET/lwip-hcsim/ports", "clean"])
-    call(["make", "-C", "~/OMNET/lwip-hcsim/ports", "-j", "8"])
+    call(["make", "-C", "../../NoSSim/lwip-hcsim/ports", "clean"])
+    call(["make", "-C", "../../NoSSim/lwip-hcsim/ports", "-j", "8"])
 
-def remake_runtime():
-    call(["make", "-C", "~/OMNET/NoSSim_contrib/DeepThings/port/hcsim_lwip", "clean"])
-    call(["make", "-C", "~/OMNET/NoSSim_contrib/DeepThings/port/hcsim_lwip"])
 
 def remake_app():
     call(["make", "cleanall"])
@@ -416,7 +413,6 @@ def evaluate_one(genome = [2,   3, 3, 3, 3, 3, 3,    1, 1, 1, 1, 1, 1]):
 
     #recompile = 1
     remake_lwip()
-    remake_runtime()
     remake_app()
     #recompile = 1
 
@@ -472,7 +468,6 @@ if __name__ == "__main__":
 
                   if recompile == 1:
                      remake_lwip()
-                     remake_runtime()
                      remake_app()
 
                   call(["make", "test"])
@@ -509,7 +504,6 @@ if __name__ == "__main__":
    omnetpp_ini()
    cluster_ned()
    remake_lwip()
-   remake_runtime()
    remake_app()
 
    call(["make", "test"])

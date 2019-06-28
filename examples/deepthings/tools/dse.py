@@ -177,7 +177,7 @@ def remake_lwip(workspace = "./"):
     with open(workspace + "src/sim_config.json") as jfile:
         sim_config_json = json.load(jfile) 
 
-    for line in fileinput.input("../../NoSSim/lwip-hcsim/ports/hcsim/lwipopts.h", inplace=True):
+    for line in fileinput.input(workspace + "lwip-hcsim/ports/hcsim/lwipopts.h", inplace=True):
        if "#define LWIP_IPV6 " in line:
            if sim_config_json["network"]["type"] == "802.15.4":
                print "#define LWIP_IPV6          1\n",
@@ -191,8 +191,8 @@ def remake_lwip(workspace = "./"):
        else:
            print "%s" % (line),
 
-    call(["make", "-C", "../../NoSSim/lwip-hcsim/ports", "clean"])
-    call(["make", "-C", "../../NoSSim/lwip-hcsim/ports", "-j", "8"])
+    call(["make", "-C", workspace + "lwip-hcsim/ports", "clean"])
+    call(["make", "-C", workspace + "lwip-hcsim/ports", "-j", "8"])
 
 
 def remake_app():
@@ -261,13 +261,6 @@ def omnetpp_ini(workspace = "./"):
                    f_out.write("**.macMaxCSMABackoffs = 101" + os.linesep)
                    f_out.write("**.wlan.radio.transmitter.preambleDuration = 0" + os.linesep)
 
-def cluster_ned(workspace = "./"):
-    with open(workspace + "src/sim_config.json") as jfile:
-        sim_config_json = json.load(jfile) 
-    if sim_config_json["network"]["type"] == "802.11":
-        call(["cp", workspace + "src/Cluster.ned.wifi", workspace + "src/Cluster.ned"])        
-    if sim_config_json["network"]["type"] == "802.15.4":
-        call(["cp", workspace + "src/Cluster.ned.6lowpan", workspace + "src/Cluster.ned"])    
 
 def get_result(workspace = "./", edge_number = 1, edge_core_config = [2]):
    frame_num = 4.0
@@ -385,14 +378,6 @@ def evaluate_one(top_workspace = "./",
                        network = network_config
                       )
     omnetpp_ini(top_workspace)
-
-    #recompile = 1
-    cluster_ned(top_workspace)
-    remake_lwip(top_workspace)
-    remake_app()
-    #recompile = 1
-
-
     call(["make", "-C", top_workspace, "test"])
     print "Simulation is finished"
     print get_result(top_workspace, edge_number, edge_core_config)    
@@ -406,7 +391,7 @@ def runtime_measure():
       sim_time_list = []
       for node_number in range(1, 13):
          start = time.time()
-         result = evaluate_one(top_workspace = "../deepthings/", genome = [6,  ftp_dim,  node_number,  0, 0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 0, 3])
+         result = evaluate_one(top_workspace = "../deepthings_1/", genome = [6,  ftp_dim,  node_number,  0, 0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 0, 3])
          end = time.time()
          print result
          with open("src/result.json") as jfile:
@@ -423,14 +408,14 @@ def runtime_measure():
 
 
 def calculate_improvement():
-    result = evaluate_one(top_workspace = "../deepthings/", genome = [6,  3,  1,  0, 2, 2, 2, 2, 2,  2, 2, 2, 2, 2, 2, 3])
+    result = evaluate_one(top_workspace = "../deepthings_1/", genome = [6,  3,  1,  0, 2, 2, 2, 2, 2,  2, 2, 2, 2, 2, 2, 3])
     latency_ref = result[0]
     energy_ref = result[1]
 
     #result = evaluate_one(top_workspace = "../deepthings_1/", genome = [6,  3,  5,  2, 1, 2, 1, 2, 2,  2, 2, 2, 2, 2, 2, 2])
     latency_best = 4.77906130968
     
-    result = evaluate_one(top_workspace = "../deepthings/", genome = [6,  3,  12,  2, 1, 1, 1, 1, 1,  1, 1, 1, 1, 1, 1, 0])
+    result = evaluate_one(top_workspace = "../deepthings_1/", genome = [6,  3,  12,  2, 1, 1, 1, 1, 1,  1, 1, 1, 1, 1, 1, 0])
     energy_best = result[1]
     
     print "latency_ref: ", latency_ref
@@ -444,14 +429,14 @@ def calculate_improvement():
 
 
 def calculate_manual_improvement():
-    result = evaluate_one(top_workspace = "../deepthings/", genome = [6,  3,  6,  0, 0, 0, 0, 0, 0,  2, 2, 2, 2, 2, 2, 3])
+    result = evaluate_one(top_workspace = "../deepthings_1/", genome = [6,  3,  6,  0, 0, 0, 0, 0, 0,  2, 2, 2, 2, 2, 2, 3])
     latency_ref = result[0]
     energy_ref = result[1]
 
     #result = evaluate_one(top_workspace = "../deepthings_1/", genome = [6,  3,  5,  2, 1, 2, 1, 2, 2,  2, 2, 2, 2, 2, 2, 2])
     latency_best = 4.77906130968
     
-    result = evaluate_one(top_workspace = "../deepthings/", genome = [6,  3,  12,  2, 1, 1, 1, 1, 1,  1, 1, 1, 1, 1, 1, 0])
+    result = evaluate_one(top_workspace = "../deepthings_1/", genome = [6,  3,  12,  2, 1, 1, 1, 1, 1,  1, 1, 1, 1, 1, 1, 0])
     energy_best = result[1]
     
     print "latency_ref: ", latency_ref

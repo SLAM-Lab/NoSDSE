@@ -68,8 +68,26 @@ def evalOneMax(individual):
                  '5x5_16': 22.134643, 
                  '3x3_4': 16.092651}
 
-        log_file_name = "evaluated_inds.log"
-
+        log_file_name = ""
+        path = ""
+        if "PoolWorker-1" == multiprocessing.current_process().name:
+           log_file_name = "evaluated_inds1.log"
+           path = "../deepthings_1/"
+        if "PoolWorker-2" == multiprocessing.current_process().name:
+           log_file_name = "evaluated_inds2.log"
+           path = "../deepthings_2/"
+        if "PoolWorker-3" == multiprocessing.current_process().name:
+           log_file_name = "evaluated_inds3.log"
+           path = "../deepthings_3/"
+        if "PoolWorker-4" == multiprocessing.current_process().name:
+           log_file_name = "evaluated_inds4.log"
+           path = "../deepthings_4/"
+        if "PoolWorker-5" == multiprocessing.current_process().name:
+           log_file_name = "evaluated_inds5.log"
+           path = "../deepthings_5/"
+        if "PoolWorker-6" == multiprocessing.current_process().name:
+           log_file_name = "evaluated_inds6.log"
+           path = "../deepthings_6/"
 
         with open(log_file_name, "a") as myfile:
            myfile.write(''.join(map(str, individual))+"  ")
@@ -78,7 +96,7 @@ def evalOneMax(individual):
            result = result_cache[get_key_string(individual)]
            print "individual is: ", individual, " get_effect individual is: ", get_key_string(individual)
         else:
-           latency_energy = dse.evaluate_one(top_workspace = "./",  genome = individual)
+           latency_energy = dse.evaluate_one(top_workspace = path,  genome = individual)
            result = latency_energy[0], mem_table[str(individual[1]) + "x" + str(individual[1]) + "_" + str(layers_config_list[individual[15]])], latency_energy[1]
            #print individual, "   ", 
            #print str(individual[1]) + "x" + str(individual[1]) + "_" + str(layers_config_list[individual[15]]), ", ", 
@@ -92,7 +110,17 @@ def evalOneMax(individual):
 	return result
 
 def mainNSGA(seed=None):
-    with open("evaluated_inds.log", "w") as myfile:
+    with open("evaluated_inds1.log", "w") as myfile:
+        myfile.write("===Evaluated genomes===:\n")
+    with open("evaluated_inds2.log", "w") as myfile:
+        myfile.write("===Evaluated genomes===:\n")
+    with open("evaluated_inds3.log", "w") as myfile:
+        myfile.write("===Evaluated genomes===:\n")
+    with open("evaluated_inds4.log", "w") as myfile:
+        myfile.write("===Evaluated genomes===:\n")
+    with open("evaluated_inds5.log", "w") as myfile:
+        myfile.write("===Evaluated genomes===:\n")
+    with open("evaluated_inds6.log", "w") as myfile:
         myfile.write("===Evaluated genomes===:\n")
 
     with open("runtime_pareto.log", "w") as myfile:
@@ -102,6 +130,9 @@ def mainNSGA(seed=None):
         myfile.write("===runtime_time===:\n")
 
     ga_data = {}
+
+    pool = multiprocessing.Pool(6)
+    toolbox.register("map", pool.map)
 
     toolbox.register("evaluate", evalOneMax)
     toolbox.register("mate", tools.cxTwoPoint)
