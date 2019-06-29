@@ -196,7 +196,7 @@ def remake_lwip(workspace = "./"):
 
 
 def remake_app():
-    call(["make", "cleanall"])
+    #call(["make", "cleanall"])
     call(["make", "makefiles"])
     call(["make", "clean"])
     call(["make", "-j", "8"])

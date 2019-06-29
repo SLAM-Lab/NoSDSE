@@ -1,6 +1,6 @@
 {
-    "FusedLayers": 16,
+    "FusedLayers": 12,
     "runtime": "WST",
-    "M": 5,
-    "N": 5
+    "M": 3,
+    "N": 3
 }
