@@ -15,8 +15,6 @@ DEEPTHINGS=../application/DeepThings
 DEEPTHINGS_LIB=../application
 DARKNET=../application/darknet-nnpack
 
-
-INET_DIR = /home/slam/OMNET/inet
 CONFIGNAME = clang-debug
 PKG_NAME = NoS
 MODEL_EXE = INET
