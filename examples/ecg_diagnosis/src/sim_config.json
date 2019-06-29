@@ -60,8 +60,8 @@
         "gateway_core_number": 4
     },
     "network": {
-        "bitrate": "6Mbps",
+        "bitrate": "",
         "type": "802.15.4",
-        "mode": "g"
+        "mode": ""
     }
 }
