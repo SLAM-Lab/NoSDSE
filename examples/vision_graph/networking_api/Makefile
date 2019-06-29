@@ -1,6 +1,6 @@
 DEBUG=1
 HCSIM=1
-LWIP=/home/slam/OMNET/lwip-hcsim
+LWIP=../../../NoSSim/lwip-hcsim/
 
 VPATH=./src:./lwip:./hcsim
 SLIB=libdistriot.so
