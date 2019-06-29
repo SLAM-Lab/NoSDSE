@@ -256,6 +256,9 @@ def remake_lwip():
     call(["make", "-C", "../../NoSSim/lwip-hcsim/ports", "clean"])
     call(["make", "-C", "../../NoSSim/lwip-hcsim/ports", "-j", "8"])
 
+def remake_runtime():
+    call(["make", "-C", "./networking_api", "clean"])
+    call(["make", "-C", "./networking_api"])
 
 def remake_app():
     call(["make", "cleanall"])
@@ -413,6 +416,7 @@ def evaluate_one(genome = [2,   3, 3, 3, 3, 3, 3,    1, 1, 1, 1, 1, 1]):
 
     #recompile = 1
     remake_lwip()
+    remake_runtime()
     remake_app()
     #recompile = 1
 
@@ -469,6 +473,7 @@ if __name__ == "__main__":
 
                   if recompile == 1:
                      remake_lwip()
+                     remake_runtime()
                      remake_app()
 
                   call(["make", "test"])
@@ -505,6 +510,7 @@ if __name__ == "__main__":
    omnetpp_ini()
    cluster_ned()
    remake_lwip()
+   remake_runtime()
    remake_app()
 
    call(["make", "test"])
