@@ -261,7 +261,7 @@ def remake_runtime():
     call(["make", "-C", "./networking_api"])
 
 def remake_app():
-    call(["make", "cleanall"])
+    #call(["make", "cleanall"])
     call(["make", "makefiles"])
     call(["make", "clean"])
     call(["make", "-j", "8"])

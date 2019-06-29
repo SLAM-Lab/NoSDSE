@@ -261,7 +261,7 @@ def remake_runtime():
     call(["make", "-C", "./networking_api"])
 
 def remake_app():
-    call(["make", "cleanall"])
+    #call(["make", "cleanall"])
     call(["make", "makefiles"])
     call(["make", "clean"])
     call(["make", "-j", "8"])
@@ -342,7 +342,7 @@ def get_latency_and_energy(edge_number, edge_core_config):
  
    return o2o_latency, avg_energy
 
-def evaluate_one(genome = [1,   2, 2, 2, 2, 2, 2,    1, 1, 1, 1, 1, 1]):
+def evaluate_one(genome = [0,   2, 2, 2, 2, 2, 2,    1, 1, 1, 1, 1, 1]):
     #return sum(genome[0:9]), -sum(genome[6:13]) 
     network_type = genome[0] 
     offload = genome[1:7]
@@ -421,7 +421,8 @@ def evaluate_one(genome = [1,   2, 2, 2, 2, 2, 2,    1, 1, 1, 1, 1, 1]):
 
 
 if __name__ == "__main__":
-
+   evaluate_one()
+   """
    modulation = ["802.11", "802.15.4"]
    op_mode_list = [("g", "6Mbps"), ("b", "1Mbps")]
    edge_number_list = [2,4,6]
@@ -474,7 +475,7 @@ if __name__ == "__main__":
          if network_type == "802.15.4":
             break
       recompile = 1
-
+   """
    """
    #network_type = "802.11" #modulation = ["802.11", "802.15.4"]
 
