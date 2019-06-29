@@ -15,10 +15,12 @@ LDFLAGS= -lm -pthread
 COMMON= -Iinclude/ -Isrc/ -Ilwip/ -Ihcsim/ -I$(LWIP)/src/include -I$(LWIP)/ports/hcsim -I$(LWIP)/ports/hcsim/context -I$(LWIP)/ports/port/include
 CFLAGS=-Wall -fPIC
 
+include ../../../NoSSim/HCSim/Makefile.macros
+
 ifeq ($(HCSIM), 1) 
-SYSTEMC_LIB=/home/slam/OMNET/systemc-2.3.1/lib-linux64
-SYSTEMC=/home/slam/OMNET/systemc-2.3.1
-HCSIM_DIR=/home/slam/OMNET/HCSim
+SYSTEMC_LIB=$(SYSTEMC_DIR)/lib-linux64
+SYSTEMC=$(SYSTEMC_DIR)
+HCSIM_DIR=../../../NoSSim/HCSim
 LDFLAGS+=-L$(SYSTEMC_LIB) -lsystemc -L$(HCSIM_DIR)/lib -lhcsim -Wl,-rpath,$(SYSTEMC_LIB)
 CFLAGS+=-DSC_INCLUDE_DYNAMIC_PROCESSES -I$(SYSTEMC)/include -I$(HCSIM_DIR)/include
 endif
